@@ -25,6 +25,40 @@ remote_directory File.join(node.sensu.directory, "handlers") do
   purge true
 end
 
+include_recipe "sensu::hipchat"
+include_recipe "sensu::pagerduty"
+include_recipe "sensu::graphite"
+include_recipe "sensu::check_graphite"
+include_recipe "sensu::graylog2"
+
+cookbook_file "/etc/sensu/conf.d/handler_default_checks.json" do
+  source "handlers/handler_default_checks.json"
+  mode 0644
+  owner "sensu"
+  group "sensu"
+end
+
+cookbook_file "/etc/sensu/conf.d/check_cron.json.disabled" do
+  source "sittercity-plugins/check_cron.json.disabled"
+  mode 0644
+  owner "sensu"
+  group "sensu"
+end
+
+cookbook_file "/etc/sensu/README.md" do
+  source "README.md"
+  mode 0644
+  owner "sensu"
+  group "sensu"
+end
+
+cookbook_file "/etc/sensu/conf.d/http_checks.json" do
+  source "http_checks.json"
+  mode 0644
+  owner "sensu"
+  group "sensu"
+end
+
 service "sensu-server" do
   provider node.platform =~ /ubuntu|debian/ ? Chef::Provider::Service::Init::Debian : Chef::Provider::Service::Init::Redhat
   supports :status => true, :restart => true

@@ -19,6 +19,29 @@
 
 include_recipe "sensu::default"
 
+cookbook_file "/etc/sensu/plugins/check-http.rb" do
+  source "sensu-community-plugins/plugins/http/check-http.rb"
+  mode 0755
+  owner "root"
+  group "root"
+end
+
+["check-load", "cpu-metrics", "disk-metrics", "memory-metrics", "interface-metrics", "vmstat-metrics", "load-metrics", "disk-capacity-metrics"].each do |check|
+  cookbook_file "/etc/sensu/plugins/#{check}.rb" do
+    source "sensu-community-plugins/plugins/system/#{check}.rb"
+    mode 0755
+    owner "root"
+    group "root"
+  end
+end
+
+cookbook_file "/etc/sensu/conf.d/system_checks.json" do
+  source "system_checks.json"
+  mode 0644
+  owner "sensu"
+  group "sensu"
+end
+
 service "sensu-client" do
   provider node.platform =~ /ubuntu|debian/ ? Chef::Provider::Service::Init::Debian : Chef::Provider::Service::Init::Redhat
   supports :status => true, :restart => true
