@@ -1,0 +1,32 @@
+  {
+    "checks": {
+      "graylog2-apache": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-procs.rb -W 2 -w 5 -c 7 -p apache ",
+        "interval": 15,
+        "subscribers": [ "graylog2" ]
+      },
+      "graylog2-mongodb": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-procs.rb -C 1 -w 2 -c 3 -p mongodb ",
+        "interval": 15,
+        "subscribers": [ "graylog2" ]
+      },
+      "graylog2-elasticsearch": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-procs.rb -w 2 -c 3 -C 2 -p elasticsearch ",
+        "interval": 15,
+        "subscribers": [ "graylog2" ]
+      },
+      "graylog2-server": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-procs.rb -w 2 -c 3 -C 2 -p graylog2-server ",
+        "interval": 15,
+        "subscribers": [ "graylog2" ]
+      }
+    }
+  }

@@ -1,0 +1,151 @@
+  {
+    "checks": {
+      "gdash_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -h 10.5.0.229 -p / -P 9292   ",
+        "interval": 15,
+        "subscribers": [ "my_sensu" ]
+      },
+      "graphite_web_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -h 10.5.0.229 -p / -P 80   ",
+        "interval": 15,
+        "subscribers": [ "my_sensu" ]
+      },
+      "www-sittercity_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u http://www.sittercity.com/",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "search-sittercity_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u 'http://www.sittercity.com/search-sitters.html?ct=6&zip=60642'",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "nfs-image-sittercity_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u http://www.sittercity.com/img/userphoto/marketing/postcard1.jpg",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "registration-sittercity_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u https://www.sittercity.com/registration -skr",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "compendium-sittercity_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u http://compendium.sittercity.com/",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "www-yearsahead": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u http://www.yearsahead.com/",
+	"interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "facebook_compendium_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u https://apps.facebook.com/sittercitycompendium/ -s true -k true -q \"Sittercity Compendium on Facebook\"   ",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "authorize-dot-net_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u https://secure.authorize.net/gateway/transact.dll -s true -k true",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "cache-fly_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u 'http://sittercity.cachefly.net/styles/ring.css?v=2010-02-11'",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "cache-fly2_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u http://sittercity.cachefly.net/static/js/jquery.js",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "braintree_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u https://www.braintreegateway.com/merchants/64j9h8khn27fmpsz/ping -sk",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "cloud-crowd_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u https://app.serv.io/accounts/login -skr",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "fetchback-pixels_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u 'https://pixel.fetchback.com/serve/fb/pdc?cat=&name=landing&sid=3051' -skr",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "twilio_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u https://api.twilio.com/ -skr",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "XO-VPN_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u https://vpn.sittercity.com/ -skr",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "Comcast-VPN_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u https://vpn2.sittercity.com/ -skr",
+        "interval": 60,
+        "subscribers": [ "my_sensu" ]
+      },
+      "DEERS_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -u https://afaems.langley.af.mil/dmdcws/DEERSVerifyService.asmx/ -skr",
+        "interval": 60,
+        "subscribers": [ "my_sensu_disabled" ]
+      },
+      "graphiti_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -h 10.5.0.229 -p / -P 5001   ",
+        "interval": 15,
+        "subscribers": [ "my_sensu_disabled" ]
+      },
+      "graylog2_web_check": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-http.rb -h 10.5.0.89 -p / -P 80 -r  ",
+        "interval": 15,
+        "subscribers": [ "my_sensu_disabled" ]
+      }
+    }
+  }

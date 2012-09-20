@@ -1,0 +1,11 @@
+  {
+    "checks": {
+      "carbon_cache": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/check-procs.rb -C 1 -p carbon-cache.py ",
+        "interval": 15,
+        "subscribers": [ "graphite" ]
+      }
+    }
+  }

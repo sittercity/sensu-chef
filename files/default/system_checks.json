@@ -1,0 +1,53 @@
+  {
+    "checks": {
+      "cpu_metrics": {
+        "handlers": ["graphite-tcp"],
+	"type": "metric",
+        "command": "/etc/sensu/plugins/cpu-metrics.rb --scheme stats.:::name:::.cpu",
+        "interval": 15,
+        "subscribers": [ "sensu_client" ]
+      },
+      "disk_metrics": {
+        "handlers": ["graphite-tcp"],
+        "type": "metric",
+        "command": "/etc/sensu/plugins/disk-metrics.rb --scheme stats.:::name:::.disk",
+        "interval": 15,
+        "subscribers": [ "sensu_client" ]
+      },
+      "interface_metrics": {
+        "handlers": ["graphite-tcp"],
+        "type": "metric",
+        "command": "/etc/sensu/plugins/interface-metrics.rb --scheme stats.:::name:::.interface",
+        "interval": 15,
+        "subscribers": [ "sensu_client" ]
+      },
+      "memory_metrics": {
+        "handlers": ["graphite-tcp"],
+        "type": "metric",
+        "command": "/etc/sensu/plugins/memory-metrics.rb --scheme stats.:::name:::.memory",
+        "interval": 15,
+        "subscribers": [ "sensu_client" ]
+      },
+      "vmstat_metrics": {
+        "handlers": ["graphite-tcp"],
+        "type": "metric",
+        "command": "/etc/sensu/plugins/vmstat-metrics.rb --scheme stats.:::name:::.vmstat",
+        "interval": 15,
+        "subscribers": [ "sensu_client" ]
+      },
+      "load_metrics": {
+        "handlers": ["graphite-tcp"],
+        "type": "metric",
+        "command": "/etc/sensu/plugins/load-metrics.rb --scheme stats.:::name:::",
+        "interval": 15,
+        "subscribers": [ "sensu_client" ]
+      },
+      "disk_capacity_metrics": {
+        "handlers": ["graphite-tcp"],
+        "type": "metric",
+        "command": "/etc/sensu/plugins/disk-capacity-metrics.rb --scheme stats.:::name:::",
+        "interval": 15,
+        "subscribers": [ "sensu_client" ]
+      }
+    }
+  }

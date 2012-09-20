@@ -1,0 +1,25 @@
+  {
+    "checks": {
+      "rabbitmq-alive": {
+        "handlers": ["default-checks"],
+	"type": "pipe",
+        "command": "/etc/sensu/plugins/rabbitmq-alive.rb -w localhost -u guest -p guest -P 55672 -v '%2F'",
+        "interval": 15,
+        "subscribers": [ "sensu_server" ]
+      },
+      "rabbitmq-overview-metrics": {
+        "handlers": ["graphite-tcp"],
+	"type": "metric",
+        "command": "/etc/sensu/plugins/rabbitmq-overview-metrics.rb --host localhost --port 55672 --user guest --password guest --scheme stats.:::name:::.rabbitmq.overview",
+        "interval": 15,
+        "subscribers": [ "sensu_server" ]
+      },
+      "rabbitmq-queue-metrics": {
+        "handlers": ["graphite-tcp"],
+	"type": "metric",
+        "command": "/etc/sensu/plugins/rabbitmq-queue-metrics.rb --host localhost --port 55672 --user guest --password guest --scheme stats.:::name:::.rabbitmq.queue",
+        "interval": 15,
+        "subscribers": [ "sensu_server" ]
+      }
+    }
+  }

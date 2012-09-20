@@ -1,0 +1,11 @@
+  {
+    "checks": {
+      "redis-metrics": {
+        "handlers": ["graphite-tcp"],
+	"type": "metric",
+        "command": "/etc/sensu/plugins/redis-graphite.rb -h localhost -p 6379 --scheme stats.:::name:::.redis.",
+        "interval": 15,
+        "subscribers": [ "sensu_server" ]
+      }
+    }
+  }
