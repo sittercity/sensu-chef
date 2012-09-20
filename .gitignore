@@ -4,5 +4,5 @@ Cheffile.lock
 examples/cookbooks
 examples/tmp
 .vagrant
-files/default/nagios_tools
+files/default/etsy-plugins/nagios_tools
 files/default/sensu-community-plugins
