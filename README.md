@@ -4,6 +4,7 @@ Installs and configures the Sensu server, client, API and dashboard components, 
 Sensu is a monitoring framework that aims to be simple, malleable, and scalable (https://github.com/sensu/sensu).
 
 
+
 COOKBOOK DEPENDENCIES
 ============
 * apt (available @ http://community.opscode.com/cookbooks/apt)
